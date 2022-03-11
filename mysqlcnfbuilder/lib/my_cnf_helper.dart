@@ -2,7 +2,7 @@ import 'dart:math';
 
 class MyCnfHelper {
   double mbRam = 1024;
-  double maxConnections = 150;
+  double maxConnections = 200;
 
   getCnfText() {
     /**

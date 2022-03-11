@@ -10,11 +10,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  double maxConnections = 150;
+  double maxConnections = 200;
   double ram = 1024;
   final MyCnfHelper _cnfHelper = MyCnfHelper();
 
   final TextEditingController _cnfController = TextEditingController();
+
+  @override
+  initState() {
+    super.initState();
+    _updateCnf();
+  }
 
   _updateCnf() {
     _cnfHelper.mbRam = ram;
@@ -45,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                     min: 512,
                     max: 1024 * 128,
-                    defaultValue: 2048,
+                    defaultValue: ram,
                     decimalPlaces: 0,
                     leading: const Text("Available Memory (MB)"),
                   ),
@@ -57,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     min: 1,
                     max: 10000,
                     decimalPlaces: 0,
-                    defaultValue: 150,
+                    defaultValue: maxConnections,
                     leading: const Text("Maximum Connections"),
                   )
                 ]),
